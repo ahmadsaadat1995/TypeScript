@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AngularjsMvc.Models.EF;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using AngularjsMvc.Models.EF;
 
 namespace AngularjsMvc.Controllers
 {
@@ -16,15 +13,15 @@ namespace AngularjsMvc.Controllers
         {
             db = new AngularjsMvcDbContext();
         }
-      [HttpGet]
-      //[Route("/Index/Index")]
+        [HttpGet]
+        //[Route("/Index/Index")]
         public ActionResult Index()
         {
             var users = db.Users.ToList();
             return Json(users, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Details( int id)
+        public ActionResult Details(int id)
         {
             var user = db.Users.Find(id);
             return Json(user, JsonRequestBehavior.AllowGet);
